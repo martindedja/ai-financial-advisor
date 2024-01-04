@@ -1,29 +1,56 @@
-# README #
+# AI Financial Advisor
 
-This README would normally document whatever steps are necessary to get your application up and running.
+This is a frontend project built with Vue 3 and TypeScript.
 
-### What is this repository for? ###
+## Getting Started
 
-* Quick summary
-* Version
-* [Learn Markdown](https://bitbucket.org/tutorials/markdowndemo)
+To get started with the project, follow these steps:
 
-### How do I get set up? ###
+1. Clone the repository:
 
-* Summary of set up
-* Configuration
-* Dependencies
-* Database configuration
-* How to run tests
-* Deployment instructions
+    ```bash
+    git clone https://github.com/martindedja/ai-financial-advisor.git
+    ```
 
-### Contribution guidelines ###
+2. Install the dependencies:
 
-* Writing tests
-* Code review
-* Other guidelines
+    ```bash
+    npm install
+    ```
 
-### Who do I talk to? ###
+3. Start the development server:
 
-* Repo owner or admin
-* Other community or team contact
+    ```bash
+    npm run dev
+    ```
+
+4. Open your browser and navigate to `http://localhost:port` to see the application.
+
+## Features Developing
+
+- Personalized Financial Planning
+- Budgeting and Expense Tracking
+- Investment Recommendations
+- Retirement Planning
+- Debt Management
+- Tax Planningvvv
+- Credit Score Monitoring
+- Financial Education
+- Chatbot for Assistance
+- Security and Privacy
+- Goal Tracking
+- Alerts and Notifications
+- Mobile App Integration
+- AI-Powered Insight
+- Community and Forums
+- Third-Party Integrations
+
+Features are going to be AI-Driven.
+
+## Contributing
+
+Contributions are welcome! If you find any issues or have suggestions, please open an issue or submit a pull request.
+
+## License
+
+This project is licensed under the [MIT License](LICENSE).
