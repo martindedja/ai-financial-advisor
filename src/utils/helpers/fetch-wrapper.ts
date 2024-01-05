@@ -2,9 +2,49 @@ import { useAuthStore } from '@/stores/auth';
 
 export const fetchWrapper = {
     get: request('GET'),
-    post: request('POST'),
+    // post: request('POST'),
     put: request('PUT'),
-    delete: request('DELETE')
+    delete: request('DELETE'),
+
+    setToken(token: string) {
+        localStorage.setItem('token', token);
+    },
+
+    clearToken() {
+        localStorage.removeItem('token');
+    },
+
+    async post(url: any, body: object) {
+        const requestOptions: RequestInit = {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                ...this.authHeader()
+            } as HeadersInit,
+            body: JSON.stringify(body)
+        };
+        const response = await fetch(url, requestOptions);
+        return this.handleResponse(response);
+    },
+
+    authHeader() {
+        const token = localStorage.getItem('token');
+        return token ? { Authorization: `Bearer ${token}` } : {};
+    },
+
+    async handleResponse(response: Response) {
+        const data = await response.json();
+        if (!response.ok) {
+            if (response.status === 401) {
+                useAuthStore().logout();
+            }
+
+            const error = (data && data.message) || response.statusText;
+            return Promise.reject(error);
+        }
+        return data;
+    }
+
 };
 
 function request(method: string) {

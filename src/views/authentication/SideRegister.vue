@@ -7,8 +7,7 @@ import RegisterForm from '@/components/auth/RegisterForm.vue';
 <template>
     <div class="pa-3">
         <v-row class="h-100vh mh-100 auth">
-            <v-col cols="12" lg="7" xl="8"
-                class="d-lg-flex align-center justify-center authentication position-relative">
+            <v-col cols="12" lg="7" xl="8" class="d-lg-flex align-center justify-center authentication position-relative">
                 <div class="auth-header pt-lg-6 pt-2 px-sm-6 px-3 pb-lg-6 pb-0">
                     <div class="position-relative">
                         <Logo />
@@ -20,9 +19,9 @@ import RegisterForm from '@/components/auth/RegisterForm.vue';
                 </div>
             </v-col>
             <v-col cols="12" lg="5" xl="4" class="d-flex align-center justify-center">
-                <div class="mt-xl-0 mt-5 mw-100" >
-                    <h2 class="text-h3 font-weight-bold mb-2">Welcome to Modernize</h2>
-                    <div class="text-subtitle-1 mb-6">Your Admin Dashboard</div>
+                <div class="mt-xl-0 mt-5 mw-100">
+                    <!-- <h2 class="text-h3 font-weight-bold mb-2">Welcome to Modernize</h2> -->
+                    <!-- <div class="text-subtitle-1 mb-6">Your Admin Dashboard</div> -->
                     <RegisterForm />
                     <h6 class="text-h6 text-medium-emphasis d-flex align-center mt-6">
                         Already have an Account?

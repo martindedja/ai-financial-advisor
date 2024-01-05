@@ -2,31 +2,41 @@ import { defineStore } from 'pinia';
 import { router } from '@/router';
 import { fetchWrapper } from '@/utils/helpers/fetch-wrapper';
 
-const baseUrl = `${import.meta.env.VITE_API_URL}/users`;
+// Change this to your base url from .env file
+const baseUrl = `http://127.0.0.1:3000/api`;
 
 export const useAuthStore = defineStore({
     id: 'auth',
     state: () => ({
-        // initialize state from local storage to enable user to stay logged in
-        // @ts-ignore
-        user: JSON.parse(localStorage.getItem('user')),
-        returnUrl: null
+        user: JSON.parse(localStorage.getItem('user') || 'null'),
     }),
     actions: {
-        async login(username: string, password: string) {
-            const user = await fetchWrapper.post(`${baseUrl}/authenticate`, { username, password });
+        async login(email: string, password: string) {
+            try {
+                const response = await fetchWrapper.post(`${baseUrl}/login`, { email, password });
+                console.log(response);
+                const { user, token } = response;
+        
+                this.user = user;
+                localStorage.setItem('user', JSON.stringify(user));
+                localStorage.setItem('token', token);
+                fetchWrapper.setToken(token);
+        
+                router.replace('/dashboards/modern');
 
-            // update pinia state
-            this.user = user;
-            // store user details and jwt in local storage to keep user logged in between page refreshes
-            localStorage.setItem('user', JSON.stringify(user));
-            // redirect to previous url or default to home page
-            router.push(this.returnUrl || '/dashboards/modern');
+            } catch (error) {
+                console.error(error);
+            }
         },
         logout() {
             this.user = null;
+
             localStorage.removeItem('user');
-            router.push('/');
+            localStorage.removeItem('token');
+
+            fetchWrapper.clearToken();
+
+            router.push('/auth/login');
         }
     }
 });
