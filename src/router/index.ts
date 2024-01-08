@@ -21,7 +21,7 @@ router.beforeEach((to, from, next) => {
     const loggedIn = localStorage.getItem('token');
 
     if (loggedIn && publicPages.includes(to.path)) {
-        return next('/dashboards/modern');
+        return next('/dashboard');
     }
 
     if (authRequired && !loggedIn) {

@@ -31,31 +31,31 @@ const productsSlider: ProductsSliderTypes[] = [
         type:true,
         img: img1,
         name: 'Main',
-        link: 'https://modernize-vuejs.adminmart.com/dashboards/modern'
+        link: 'https://modernize-vuejs.adminmart.com/dashboard'
     },
     {
         type:true,
         img: img2,
         name: 'Dark',
-        link: 'https://modernize-vue3-dark.netlify.app/dashboards/modern'
+        link: 'https://modernize-vue3-dark.netlify.app/dashboard'
     },
     {
         type:true,
         img: img3,
         name: 'Horizontal',
-        link: 'https://modernize-vue3-horizontal.netlify.app/dashboards/modern'
+        link: 'https://modernize-vue3-horizontal.netlify.app/dashboard'
     },
     {
         type:true,
         img: img4,
         name: 'Minisidebar',
-        link: 'https://modernize-vue3-minisidebar.netlify.app/dashboards/modern'
+        link: 'https://modernize-vue3-minisidebar.netlify.app/dashboard'
     },
     {
         type:true,
         img: img5,
         name: 'RTL',
-        link: 'https://modernize-vue3-rtl.netlify.app/dashboards/modern'
+        link: 'https://modernize-vue3-rtl.netlify.app/dashboard'
     },
     {
         type:false,
@@ -297,27 +297,27 @@ const demosMegamenu: DemosMegaMenuTypes[] = [
     {
         img: img1,
         name: 'Main',
-        link: 'https://modernize-vuejs.adminmart.com/dashboards/modern'
+        link: 'https://modernize-vuejs.adminmart.com/dashboard'
     },
     {
         img: img2,
         name: 'Dark',
-        link: 'https://modernize-vue3-dark.netlify.app/dashboards/modern'
+        link: 'https://modernize-vue3-dark.netlify.app/dashboard'
     },
     {
         img: img3,
         name: 'Horizontal',
-        link: 'https://modernize-vue3-horizontal.netlify.app/dashboards/modern'
+        link: 'https://modernize-vue3-horizontal.netlify.app/dashboard'
     },
     {
         img: img4,
         name: 'Minisidebar',
-        link: 'https://modernize-vue3-minisidebar.netlify.app/dashboards/modern'
+        link: 'https://modernize-vue3-minisidebar.netlify.app/dashboard'
     },
     {
         img: img5,
         name: 'RTL',
-        link: 'https://modernize-vue3-rtl.netlify.app/dashboards/modern'
+        link: 'https://modernize-vue3-rtl.netlify.app/dashboard'
     }
 ];
 const appsMegamenu: AppsMegaMenuTypes[] = [

@@ -50,12 +50,12 @@ const horizontalItems: menu[] = [
             {
                 title: 'Modern',
                 icon: CircleIcon,
-                to: '/dashboards/modern'
+                to: '/dashboard'
             },
             {
                 title: 'Ecommerce',
                 icon: CircleIcon,
-                to: '/dashboards/ecommerce'
+                to: '/dashboard/ecommerce'
             }
         ]
     },

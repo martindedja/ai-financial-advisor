@@ -1,6 +1,7 @@
 import { defineStore } from 'pinia';
 import { router } from '@/router';
 import { fetchWrapper } from '@/utils/helpers/fetch-wrapper';
+import { useUserStore } from './userStore';
 
 // Change this to your base url from .env file
 const baseUrl = `http://127.0.0.1:3000/api`;
@@ -14,16 +15,15 @@ export const useAuthStore = defineStore({
         async login(email: string, password: string) {
             try {
                 const response = await fetchWrapper.post(`${baseUrl}/login`, { email, password });
-                console.log(response);
-                const { user, token } = response;
-        
+                
+                const { user, token } = response;        
                 this.user = user;
                 localStorage.setItem('user', JSON.stringify(user));
                 localStorage.setItem('token', token);
                 fetchWrapper.setToken(token);
-        
-                router.replace('/dashboards/modern');
-
+                const userStore = useUserStore();
+                userStore.fetchUserData();
+                router.replace('/dashboard');
             } catch (error) {
                 console.error(error);
             }

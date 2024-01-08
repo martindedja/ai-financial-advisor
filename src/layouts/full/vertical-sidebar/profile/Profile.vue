@@ -1,7 +1,15 @@
 <script setup lang="ts">
+import { computed } from 'vue';
 import { useAuthStore } from '@/stores/auth';
+import { useUserStore } from '@/stores/userStore';
+
 
 const authStore = useAuthStore();
+const userStore = useUserStore();
+
+let userName = computed(() => userStore.getUser()?.name);
+console.log(userName)
+
 </script>
 
 <template>
@@ -11,7 +19,7 @@ const authStore = useAuthStore();
                 <img src="@/assets/images/profile/user-1.jpg" alt="user" height="40" />
             </v-avatar>
             <div class="ml-4">
-                <h4 class="mb-n1 text-h6 textPrimary">Mathew</h4>
+                <h4 class="mb-n1 text-h6 textPrimary">{{ userName }}</h4>
                 <span class="text-subtitle-2 textSecondary">Designer</span>
             </div>
             <div class="ml-auto">
@@ -29,6 +37,7 @@ const authStore = useAuthStore();
     position: relative;
     overflow: hidden;
 }
+
 .line-height-none {
     line-height: normal;
 }

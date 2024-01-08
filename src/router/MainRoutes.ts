@@ -3,17 +3,17 @@ const MainRoutes = {
     meta: {
         requiresAuth: true
     },
-    redirect: '/dashboards/modern',
+    redirect: '/dashboard',
     component: () => import('@/layouts/full/FullLayout.vue'),
     children: [
         {
             name: 'Modern',
-            path: '/dashboards/modern',
-            component: () => import('@/views/dashboard/modern/index.vue')
+            path: '/dashboard',
+            component: () => import('@/views/dashboard/financialPlanner/index.vue')
         },
         {
             name: 'eCommerce',
-            path: '/dashboards/ecommerce',
+            path: '/dashboard/ecommerce',
             component: () => import('@/views/dashboard/ecommerce/index.vue')
         },
         {

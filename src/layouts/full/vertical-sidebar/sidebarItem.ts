@@ -79,12 +79,12 @@ const sidebarItem: menu[] = [
         chip: 'New',
         chipColor: 'surface',
         chipBgColor: 'secondary',
-        to: '/dashboards/modern'
+        to: '/dashboard'
     },
     {
         title: 'eCommerce',
         icon: ShoppingCartIcon,
-        to: '/dashboards/ecommerce'
+        to: '/dashboard/ecommerce'
     },
     { header: 'Apps' },
     {
