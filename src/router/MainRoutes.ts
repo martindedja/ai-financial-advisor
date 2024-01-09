@@ -7,29 +7,29 @@ const MainRoutes = {
     component: () => import('@/layouts/full/FullLayout.vue'),
     children: [
         {
-            name: 'Modern',
+            name: 'Dashboard',
             path: '/dashboard',
-            component: () => import('@/views/dashboard/financialPlanner/index.vue')
+            component: () => import('@/views/financialPlanner/index.vue')
         },
         {
-            name: 'eCommerce',
-            path: '/dashboard/ecommerce',
-            component: () => import('@/views/dashboard/ecommerce/index.vue')
+            name: 'Transfers',
+            path: '/transfers',
+            component: () => import('@/views/transfers/index.vue')
         },
         {
-            name: 'Chats',
-            path: '/apps/chats',
-            component: () => import('@/views/apps/chat/Chats.vue')
+            name: 'Transactions',
+            path: '/transactions',
+            component: () => import('@/views/transactions/index.vue')
         },
         {
-            name: 'Email',
-            path: '/apps/email',
-            component: () => import('@/views/apps/email/Email.vue')
+            name: 'Accounts',
+            path: '/accounts',
+            component: () => import('@/views/accounts/index.vue')
         },
         {
-            name: 'ecom Products',
-            path: '/ecommerce/products',
-            component: () => import('@/views/apps/eCommerce/Products.vue')
+            name: 'Investments',
+            path: '/investments',
+            component: () => import('@/views/investments/index.vue')
         },
         {
             name: 'Product detail',

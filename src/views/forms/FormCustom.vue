@@ -4,7 +4,7 @@ import { ref } from 'vue';
 import BaseBreadcrumb from '@/components/shared/BaseBreadcrumb.vue';
 import UiParentCard from '@/components/shared/UiParentCard.vue';
 import UiChildCard from '@/components/shared/UiChildCard.vue';
-import CustomFrom from '@/components/forms/form-custom/CustomFrom.vue'
+import CustomForm from '@/components/forms/form-custom/CustomForm.vue'
 // theme breadcrumb
 const page = ref({ title: 'Form Layouts' });
 const breadcrumbs = ref([
@@ -22,12 +22,12 @@ const breadcrumbs = ref([
 </script>
 
 <template>
-   <BaseBreadcrumb :title="page.title" :breadcrumbs="breadcrumbs"></BaseBreadcrumb>
-   <v-row>
+    <BaseBreadcrumb :title="page.title" :breadcrumbs="breadcrumbs"></BaseBreadcrumb>
+    <v-row>
         <v-col cols="12" class="mb-12">
             <UiParentCard title="Custom Form">
-                <CustomFrom/>
-            </UiParentCard>           
+                <CustomForm />
+            </UiParentCard>
         </v-col>
-   </v-row>           
+    </v-row>
 </template>

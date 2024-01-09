@@ -1,11 +1,16 @@
 {
   "extends": "@vue/tsconfig/tsconfig.web.json",
-  "include": ["env.d.ts", "src/**/*", "src/**/*.vue"],
+  "include": ["env.d.ts", "src/**/*", "src/**/*.vue", "src/**/*.ts", "src/**/*.d.ts", "src/**/*.tsx", "src/**/*.vue"],
   "compilerOptions": {
+    "moduleResolution": "node",
     "baseUrl": ".",
     "paths": {
       "@/*": ["./src/*"]
-    }, 
+    },
+    "types": ["vue"],
+    "target": "esnext",
+    "module": "esnext",
+    "lib": ["esnext", "dom"], 
     "allowJs": true,
     "ignoreDeprecations": "5.0",
     "verbatimModuleSyntax": true
