@@ -1,17 +1,34 @@
 <script setup lang="ts">
-const props = defineProps({
-    title: String
-});
+    const props = defineProps({
+        title: String
+    });
+    const emitToParent = defineEmits([
+        'closeModal'
+    ]);
+
+    const closeModal = () => {
+        emitToParent('closeModal');
+    };
 </script>
 
-// ===============================|| Ui Parent Card||=============================== //
 <template>
-    <v-card elevation="10" >
+    <v-card elevation="10">
         <v-card-item class="py-4 px-6">
-            <div class="d-sm-flex align-center justify-space-between">
-                <v-card-title class="text-h5">{{ title }}</v-card-title>
+            <div
+                class="d-sm-flex align-center justify-space-between"
+            >
+                <v-card-title class="text-h5">{{
+                    title
+                }}</v-card-title>
                 <!-- <template v-slot:append> -->
-                <slot name="action"></slot>
+                <slot name="action"
+                    ><v-btn
+                        variant="flat"
+                        @click="closeModal"
+                    >
+                        &#x2715;
+                    </v-btn></slot
+                >
                 <!-- </template> -->
             </div>
         </v-card-item>

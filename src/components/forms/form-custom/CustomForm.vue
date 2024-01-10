@@ -70,7 +70,9 @@
 
         v$.value.$reset();
     };
-
+    const emitcloseModal = defineEmits([
+        'closeModal'
+    ]);
     const handleSubmit = () => {
         v$.value.$touch();
 
@@ -79,6 +81,7 @@
                 ...form
             });
             clear();
+            emitcloseModal('closeModal');
         } else {
             console.error(
                 'Form is invalid:',
