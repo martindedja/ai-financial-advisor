@@ -2,6 +2,7 @@
     import { ref, reactive } from 'vue';
     import { useVuelidate } from '@vuelidate/core';
     import { required } from '@vuelidate/validators';
+    import axios from 'axios';
     type FormType = {
         amount: string | '' | null;
         description: string | '' | null;
@@ -10,6 +11,12 @@
         frequency: string | '' | null;
         date: string | '' | null;
     };
+
+    const user = localStorage.getItem('user');
+    const userDataObject = user
+        ? JSON.parse(user)
+        : null;
+    const userId = userDataObject.userData.id;
 
     const categoryOptions = ref([
         'Food',
@@ -35,12 +42,12 @@
     ]);
 
     const initialState = {
-        amount: '',
-        description: '',
-        category: null,
-        paymentMethod: null,
-        frequency: null,
-        date: ''
+        amount: '1234',
+        description: '1234',
+        category: 'Car',
+        paymentMethod: 'Credit Card',
+        frequency: 'One-Time',
+        date: '2021-09-01'
     };
 
     const form = reactive<FormType>({
@@ -77,9 +84,33 @@
         v$.value.$touch();
 
         if (!v$.value.$invalid) {
-            console.log('Form data:', {
-                ...form
-            });
+            const response = fetch(
+                `${
+                    import.meta.env
+                        .VITE_API_BASE_URL_DEV
+                }/api/expenses`,
+                {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type':
+                            'application/json',
+                        Authorization: `Bearer ${localStorage.getItem(
+                            'token'
+                        )}`
+                    },
+                    body: JSON.stringify({
+                        amount: form.amount,
+                        description:
+                            form.description,
+                        category_id: 1,
+                        payment_method:
+                            form.paymentMethod,
+                        frequency: form.frequency,
+                        date: form.date,
+                        user_id: userId
+                    })
+                }
+            );
             clear();
             emitcloseModal('closeModal');
         } else {
