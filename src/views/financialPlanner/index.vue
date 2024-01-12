@@ -7,6 +7,16 @@
     const isModalOpen = ref(false);
     let chartData = ref({});
 
+    const formatDate = (date: Date) =>
+        date.toISOString().split('T')[0];
+    const oneWeekAgo = new Date();
+    oneWeekAgo.setDate(oneWeekAgo.getDate() - 7);
+
+    const selectedRange = ref('1W');
+    const startDate = ref(formatDate(oneWeekAgo));
+    const endDate = ref(formatDate(new Date()));
+    const aggregationType = ref('day');
+
     const toggleModal = () => {
         isModalOpen.value = !isModalOpen.value;
     };
@@ -21,7 +31,16 @@
                 `${
                     import.meta.env
                         .VITE_API_BASE_URL_DEV
-                }/api/expenses`
+                }/api/expenses`,
+                {
+                    params: {
+                        startDate:
+                            startDate.value,
+                        endDate: endDate.value,
+                        aggregationType:
+                            aggregationType.value
+                    }
+                }
             )
             .then((response) => {
                 chartData.value =
@@ -37,6 +56,54 @@
     onMounted(() => {
         getExpenses();
     });
+
+    const onDateRangeChange = (range) => {
+        selectedRange.value = range;
+        const now = new Date();
+
+        if (range === '1W') {
+            startDate.value = new Date(
+                now.setDate(now.getDate() - 7)
+            );
+            endDate.value = new Date();
+            aggregationType.value = 'day';
+        } else if (range === '1M') {
+            startDate.value = new Date(
+                now.setMonth(now.getMonth() - 1)
+            );
+            endDate.value = new Date();
+            aggregationType.value = 'day';
+        } else if (range === '6M') {
+            startDate.value = new Date(
+                now.setMonth(now.getMonth() - 6)
+            );
+            endDate.value = new Date();
+            aggregationType.value = 'week';
+        } else if (range === '1Y') {
+            startDate.value = new Date(
+                now.setFullYear(
+                    now.getFullYear() - 1
+                )
+            );
+            endDate.value = new Date();
+            aggregationType.value = 'month';
+        }
+
+        startDate.value = startDate.value
+            .toISOString()
+            .split('T')[0];
+        endDate.value = endDate.value
+            .toISOString()
+            .split('T')[0];
+
+        console.log(
+            `Start Date: ${startDate.value}`
+        );
+        console.log(`End Date: ${endDate.value}`);
+        console.log(`Selected Range: ${range}`);
+
+        getExpenses();
+    };
 
     function processDataForChart(data: any[]) {
         const groupedByDate = data.reduce(
@@ -106,6 +173,7 @@
             :categories="chartData.categories"
             :series="chartData.series"
             :total="chartData.total"
+            @onDateRangeChange="onDateRangeChange"
         />
         <v-dialog
             v-model="isModalOpen"

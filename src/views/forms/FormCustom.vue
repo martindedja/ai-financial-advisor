@@ -25,6 +25,7 @@
     const handleCloseModal = () => {
         emitToParent('closeModal');
     };
+
 </script>
 
 <template>
