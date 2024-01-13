@@ -1,10 +1,12 @@
 <script setup lang="ts">
     import FormCustom from '../forms/FormCustom.vue';
+    import FormIncome from '../forms/FormIncome.vue';
     import TotalEarning from '@/components/widgets/charts/TotalEarning.vue';
     import { onMounted, ref } from 'vue';
     import axios from 'axios';
 
     const isModalOpen = ref(false);
+    const isIncomeModalOpen = ref(false);
     let chartData = ref({});
 
     const formatDate = (date: Date) =>
@@ -21,8 +23,17 @@
         isModalOpen.value = !isModalOpen.value;
     };
 
+    const toggleIncomeModal = () => {
+        isIncomeModalOpen.value =
+            !isIncomeModalOpen.value;
+    };
+
     const closeModal = () => {
         isModalOpen.value = false;
+    };
+
+    const closeIncomeModal = () => {
+        isIncomeModalOpen.value = false;
     };
 
     const getExpenses = async () => {
@@ -161,6 +172,12 @@
             <h1>Financial Planner</h1>
             <div>
                 <v-btn
+                    color="primary mr-3"
+                    @click="toggleIncomeModal"
+                >
+                    + Add Income
+                </v-btn>
+                <v-btn
                     color="primary"
                     @click="toggleModal"
                 >
@@ -181,6 +198,14 @@
         >
             <FormCustom
                 @close-modal="closeModal"
+            />
+        </v-dialog>
+        <v-dialog
+            v-model="isIncomeModalOpen"
+            class="formCustomModal"
+        >
+            <FormIncome
+                @close-modal="closeIncomeModal"
             />
         </v-dialog>
     </div>

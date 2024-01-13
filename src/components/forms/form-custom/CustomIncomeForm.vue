@@ -19,8 +19,6 @@
         'Miscellaneous'
     ]);
 
-    const formType = ref(['Expense', 'Income']);
-
     const paymentMethodOptions = ref([
         'Credit Card',
         'Debit Card',
@@ -37,7 +35,6 @@
     ]);
 
     const initialState = {
-        formtype: null,
         amount: '1234',
         description: '1234',
         category: 'Car',
@@ -51,7 +48,6 @@
     });
 
     const rules = {
-        formtype: { required },
         amount: { required },
         description: { required },
         category: { required },
@@ -120,32 +116,6 @@
 </script>
 <template>
     <v-form>
-        <v-row>
-            <v-label
-                class="mb-2 font-weight-medium"
-                >Type</v-label
-            >
-            <v-select
-                :items="formType"
-                placeholder="Select Type"
-                item-title="items"
-                item-value="abbr"
-                return-object
-                single-line
-                variant="outlined"
-                v-model="form.formtype"
-                :error-messages="
-                    v$.formtype.$error
-                        ? v$.formtype.$errors.map(
-                              (e) => ''
-                          )
-                        : []
-                "
-                @blur="v$.formtype.$touch()"
-                required
-            ></v-select>
-        </v-row>
-
         <v-row>
             <v-col
                 cols="12"
